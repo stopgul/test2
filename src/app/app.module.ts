@@ -8,6 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core/core.module";
 import { ErrorInterceptor } from "./core/interceptors/error.interceptor";
+import { ContentModule } from "./content/content.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { ErrorInterceptor } from "./core/interceptors/error.interceptor";
     HttpClientModule,
     CoreModule,
     SharedModule,
+    ContentModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
