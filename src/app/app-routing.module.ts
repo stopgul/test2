@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { ArticlesComponent } from "./content/articles/articles.component";
 import { NotFoundComponent } from "./core/not-found/not-found.component";
 
 const routes: Routes = [
-  { path: "", component: NotFoundComponent, data: { breadcrumb: "Home" } },
+  { path: "", component: ArticlesComponent, data: { breadcrumb: "Articles" } },
+  {
+    path: "articles",
+    component: ArticlesComponent,
+    data: { breadcrumb: "Articles" },
+  },
   {
     path: "not-found",
     component: NotFoundComponent,
