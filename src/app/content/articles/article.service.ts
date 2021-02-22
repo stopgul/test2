@@ -36,9 +36,24 @@ export class ArticleService {
     );
   }
 
-  getArticlesBySection(section: string): Observable<IArticle[]> {
+  getLastArticles(): Observable<IArticle[]> {
     let params = new HttpParams();
-    params = params.append("section", section);
+    params = params.append("limit", "5");
+    return this.http.get<IArticle[]>(this.baseUrl + "content").pipe(
+      map((response) => {
+        console.log(`article: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((err) => {
+        console.log(`error: ${JSON.stringify(err)}`);
+        return empty();
+      })
+    );
+  }
+
+  getArticlesBySection(categoryName: string): Observable<IArticle[]> {
+    let params = new HttpParams();
+    params = params.append("categoryName", categoryName);
     return this.http
       .get<IArticle[]>(this.baseUrl + "content/GetArticlesByCategory")
       .pipe(

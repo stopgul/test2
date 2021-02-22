@@ -9,16 +9,24 @@ import { ArticleService } from "./article.service";
 })
 export class ArticlesComponent implements OnInit {
   articles: IArticle[];
+  articlesLast: IArticle[];
 
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
     this.getArticles();
+    this.getLastArticles();
   }
 
   getArticles() {
     this.articleService.getArticles().subscribe((res) => {
       this.articles = res;
+    });
+  }
+
+  getLastArticles() {
+    this.articleService.getLastArticles().subscribe((res) => {
+      this.articlesLast = res;
     });
   }
 }

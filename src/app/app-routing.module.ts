@@ -7,9 +7,15 @@ const routes: Routes = [
   { path: "", component: ArticlesComponent, data: { breadcrumb: "Articles" } },
   {
     path: "articles",
-    component: ArticlesComponent,
+    loadChildren: () =>
+      import("./content/content.module").then((mod) => mod.ContentModule),
     data: { breadcrumb: "Articles" },
   },
+  // {
+  //   path: "articles",
+  //   component: ArticlesComponent,
+  //   data: { breadcrumb: "Articles" },
+  // },
   {
     path: "not-found",
     component: NotFoundComponent,
