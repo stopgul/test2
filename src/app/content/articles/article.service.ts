@@ -26,7 +26,7 @@ export class ArticleService {
   getArticles(): Observable<IArticle[]> {
     return this.http.get<IArticle[]>(this.baseUrl + "content").pipe(
       map((response) => {
-        console.log(`article: ${JSON.stringify(response)}`);
+        //console.log(`articles: ${JSON.stringify(response)}`);
         return response;
       }),
       catchError((err) => {
@@ -41,7 +41,7 @@ export class ArticleService {
     params = params.append("limit", "5");
     return this.http.get<IArticle[]>(this.baseUrl + "content").pipe(
       map((response) => {
-        console.log(`article: ${JSON.stringify(response)}`);
+        //console.log(`articles: ${JSON.stringify(response)}`);
         return response;
       }),
       catchError((err) => {
@@ -61,5 +61,18 @@ export class ArticleService {
           return response;
         })
       );
+  }
+
+  getCategories(): Observable<string[]> {
+    return this.http.get<string[]>(this.baseUrl + "content/getCategories").pipe(
+      map((response) => {
+        //console.log(`category: ${JSON.stringify(response)}`);
+        return response;
+      }),
+      catchError((err) => {
+        console.log(`error: ${JSON.stringify(err)}`);
+        return empty();
+      })
+    );
   }
 }

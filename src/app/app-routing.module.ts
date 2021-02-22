@@ -4,18 +4,13 @@ import { ArticlesComponent } from "./content/articles/articles.component";
 import { NotFoundComponent } from "./core/not-found/not-found.component";
 
 const routes: Routes = [
-  { path: "", component: ArticlesComponent, data: { breadcrumb: "Articles" } },
+  { path: "", component: ArticlesComponent, data: { breadcrumb: "Article" } },
   {
-    path: "articles",
+    path: "article",
     loadChildren: () =>
       import("./content/content.module").then((mod) => mod.ContentModule),
-    data: { breadcrumb: "Articles" },
+    data: { breadcrumb: "Article" },
   },
-  // {
-  //   path: "articles",
-  //   component: ArticlesComponent,
-  //   data: { breadcrumb: "Articles" },
-  // },
   {
     path: "not-found",
     component: NotFoundComponent,
